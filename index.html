@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; base-uri 'none'; form-action 'none'"><title>小さな発送センター・ラボ</title></head>
+<body>
+  <div class="mgl-homebar">
+    <a class="mgl-homebar-brand" href="/"><span class="mgl-homebar-mark" aria-hidden="true"></span>ママゴトラボ</a>
+    <span class="mgl-homebar-note">業務自動化の開発ラボ</span>
+    <a class="mgl-homebar-link" href="/">ホームへ<span aria-hidden="true"> →</span></a>
+  </div>
+  <main class="page-shell">
+  <header class="page-header"><p class="eyebrow">DISPATCH LAB / 架空条件のシミュレーション</p><h1>小さな発送センター・ラボ</h1><p>棚位置・注文の入り方・担当配分・運び方・梱包の速さを変え、人と荷物の流れを比べるローカル実験です。表示する件数と時間は実績ではありません。</p></header>
+  <div class="app-grid">
+    <section class="scene-panel" aria-label="発送センター"><canvas aria-label="発送センターの動作" width="1280" height="900"></canvas><p class="canvas-error" hidden>この環境では倉庫を表示できません</p></section>
+    <aside class="control-panel"><h2>実験条件</h2><form data-settings>
+      <label>棚配置<select name="placement"><option value="popularNear">人気商品を近く</option><option value="popularFar">人気商品を奥へ</option></select></label>
+      <label>注文の入り方<select name="arrival"><option value="steady">一定ペース（12秒ごと）</option><option value="burst">朝にまとめて来る</option><option value="waves">波がある（3回に分かれる）</option></select></label>
+      <label>担当配分<select name="staffing"><option value="pick1Pack2">集める1人・梱包2人</option><option value="pick2Pack1">集める2人・梱包1人</option><option value="pick1Pack1">集める1人・梱包1人</option><option value="pick2Pack2">集める2人・梱包2人</option><option value="pick3Pack1">集める3人・梱包1人</option></select></label>
+      <label>運び方<select name="transport"><option value="single">1件ずつ運ぶ</option><option value="cart2">台車で最大2件</option><option value="cart3">台車で最大3件</option><option value="cart5">台車で最大5件</option></select></label>
+      <label>梱包の速さ<select name="packing"><option value="standard">標準（1件16秒）</option><option value="tooled">道具を整えた台（1件12秒）</option></select></label>
+      <label>再生速度<select name="speed"><option value="4">通常 4倍</option><option value="8">速い 8倍</option></select></label>
+    </form><div class="primary-actions"><button type="button" data-action="start">発送を始める</button><button type="button" data-action="pause" disabled>一時停止</button><button type="button" data-action="reset">最初から</button></div>
+    <label class="route-toggle"><input type="checkbox" data-routes checked> 移動経路を表示</label><p class="run-status" data-testid="run-status" aria-live="polite">条件を選んで発送を始めてください</p><p class="live-metrics" data-testid="live-metrics">積み込み 0/24　集める前 0　梱包待ち 0</p><p class="note">1tickは100ミリ秒です。歩行時間を含みます。梱包台は梱包担当の人数だけ並びます。人同士の渋滞や実在庫は扱いません。結果は保存・送信されません。</p></aside>
+  </div><section class="results-panel"><h2>結果と比較</h2><p data-result>最後の積み込みまで —／平均 —／歩行 0.0m／最大梱包待ち 0件</p><p data-comparison>最初に完走した結果を比較基準としてメモリに保持します。再読込すると消えます。</p><button type="button" data-action="baseline" disabled>この結果を基準にする</button><p class="note">架空条件による比較です。棚数、注文構成、動線などは個別に変更できますが、この画面から実データは送信しません。</p></section><section class="orders-panel"><h2>注文の状態</h2><p data-selected-order aria-live="polite">注文を選ぶと現在の工程を説明します</p><ol data-orders aria-label="注文一覧"></ol></section>
+</main><script type="module" src="/src/main.ts"></script></body></html>
